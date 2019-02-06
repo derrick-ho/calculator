@@ -1,0 +1,29 @@
+.calc-numbers, .calc-functions {
+   display: inline-grid;
+   background-color: rgba(195, 195, 255, 0.9);
+   padding: 10px;
+   font-size: 100%;
+   font-family: "Lucida Console", Monaco, monospace;
+}
+.calc-functions {
+   height: 200px;
+}
+.calc-numbers {
+   grid-template-columns: auto auto auto;
+   justify-content: start;
+}
+
+#del {
+   font-size:20px;
+   height: 20px;
+   padding: 15px 0;
+}
+
+.calc-input {
+   background-color: white;
+   border: solid thin black;
+   font-size: 40px;
+   text-align: center;
+   height: 50px;
+   width: 50px;
+}
