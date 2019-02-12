@@ -1,29 +1,74 @@
-.calc-numbers, .calc-functions {
-   display: inline-grid;
+body {
    background-color: rgba(195, 195, 255, 0.9);
-   padding: 10px;
-   font-size: 100%;
-   font-family: "Lucida Console", Monaco, monospace;
+   /*padding: 0 20vmin;*/
+   width: 90vmin;
 }
-.calc-functions {
-   height: 200px;
+
+.calc { 
+   display: flex;
+   flex-wrap: wrap;
+   background-color: rgba(195, 195, 195, 0.9);
+   font-family: "Lucida Console", Monaco, monospace;
+   padding: 9vmin;
+   /*
+   margin: 0%;
+   height:50vw;
+   width: 80vw/40vh;
+   height: 80vw/40vh;
+   */
+}
+
+.calc-disp input {
+   width:70vmin;
+   border: hidden;
+}
+
+#calc-display-smol  input {
+   font-size: 5vmin;
+   color: gray;
+}
+#calc-display  input {
+   font-size: 10vmin;
+}
+.calc-numbers, .calc-functions {
+   flex-wrap: wrap;
+   /*
+   width: 50%;
+   height:40vmin;
+   */
+   font-size: 20vmin;
+   width:50vmin;
+
 }
 .calc-numbers {
-   grid-template-columns: auto auto auto;
+   display: inline-flex;
+   flex: 1 1 60%;
+   /*
    justify-content: start;
+   float: left;
+   grid-area: main;
+   max-width:10%;
+   */
 }
 
-#del {
-   font-size:20px;
-   height: 20px;
-   padding: 15px 0;
+.calc-functions {
+   display: flex;
+   flex: 1 4 25%;
+   /*
+   max-width:10%;
+   */
 }
-
+/*
+#add {
+   flex-grow: 4;
+}
+*/
 .calc-input {
    background-color: white;
    border: solid thin black;
-   font-size: 40px;
+   font-size: 5vmin;
    text-align: center;
-   height: 50px;
-   width: 50px;
+   width: 15vmin;
+   height: 4vmin;
+   padding: 6vmin 0;
 }

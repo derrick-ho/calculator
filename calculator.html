@@ -8,31 +8,38 @@
    <link rel="stylesheet" type="text/css" href="calculator.css" />
 </head>
 <body>
-   <form id= "calc-display">
-      <input type="text" id= "calc-form" value="0"></input>
-   </form>
    <!--<div class="calc-display">Header</div>-->
-   <div class="calc-numbers">
-     <div class="calc-input" id='one'>1</div>
-     <div class="calc-input" id='two'>2</div>  
-     <div class="calc-input" id='three'>3</div>
-     <div class="calc-input" id='four'>4</div>
-     <div class="calc-input" id='five'>5</div>
-     <div class="calc-input" id='six'>6</div>
-     <div class="calc-input" id='seven'>7</div>  
-     <div class="calc-input" id='eight'>8</div>
-     <div class="calc-input" id='nine'>9</div>
-     <div class="calc-input" id='decimal'>.</div>
-     <div class="calc-input" id='zero'>0</div>
-     <div class="calc-input" id='del'>DEL</div>
-   </div>
-   <div class="calc-functions">
-     <div class="calc-input" id='add'>+</div>
-     <div class="calc-input" id='subtract'>-</div>  
-     <div class="calc-input" id='multiply'>*</div>
-     <div class="calc-input" id='divide'>/</div>
-     <div class="calc-input" id='equal'>=</div>
+   <div class="calc">
+      <form id= "calc-display-smol" class="calc-disp">
+         <input type="text" id= "calc-form" value="0" readonly></input>
+      </form>
+      <form id= "calc-display" class="calc-disp">
+         <input type="text" id= "calc-res" value="0" readonly></input>
+      </form>
+      <div class="calc-numbers">
+        <div class="calc-input" id='one'>1</div>
+        <div class="calc-input" id='two'>2</div>  
+        <div class="calc-input" id='three'>3</div>
+        <div class="calc-input" id='four'>4</div>
+        <div class="calc-input" id='five'>5</div>
+        <div class="calc-input" id='six'>6</div>
+        <div class="calc-input" id='seven'>7</div>  
+        <div class="calc-input" id='eight'>8</div>
+        <div class="calc-input" id='nine'>9</div>
+        <div class="calc-input" id='decimal'>.</div>
+        <div class="calc-input" id='zero'>0</div>
+        <div class="calc-input" id='del'>DEL</div>
+      </div>
+      <div class="calc-functions">
+         <div class="calc-input" id='clear'>C</div>
+         <div class="calc-input" id='add'>+</div>
+         <div class="calc-input" id='subtract'>-</div>  
+         <div class="calc-input" id='multiply'>*</div>
+         <div class="calc-input" id='divide'>/</div>
+         <div class="calc-input" id='equal'>=</div>
+      </div>
    </div>
    <script type="text/javascript" src="calculator.js"></script>
 </body>
 </html>
+
