@@ -26,6 +26,7 @@ body {
    border: hidden;
    width:500px;
    background-color: rgba(200, 255, 200, 0.5);
+   overflow:scroll;
 /*
    width:70vmin;
 */

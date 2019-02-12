@@ -81,12 +81,14 @@ function operate(dispVal) {
       func.splice(i, 1);
       num.splice(i, 2, solve);
    }
+
    return solve;
 }
 
+// TODO: Read e+X numbers
 function setDisp(val) {
    // ==================================Clear===================================
-   if (val == 'C') {
+   if (val == 'AC') {
       disp.value = 0;
       resDisp.value = 0;
       eqFlag = false;
