@@ -11,10 +11,10 @@
    <!--<div class="calc-display">Header</div>-->
    <div class="calc">
       <form id= "calc-display-smol" class="calc-disp">
-         <input type="text" id= "calc-form" value="0" readonly></input>
+         <input type="text" id= "calc-form" value="0" readonly onsubmit="return false;"></input>
       </form>
       <form id= "calc-display" class="calc-disp">
-         <input type="text" id= "calc-res" value="0" readonly></input>
+         <input type="text" id= "calc-res" value="0" readonly onsubmit="return false;"></input>
       </form>
       <div class="calc-numbers">
         <div class="calc-input" id='one'>1</div>
@@ -31,7 +31,7 @@
         <div class="calc-input" id='del'>DEL</div>
       </div>
       <div class="calc-functions">
-         <div class="calc-input" id='clear'>C</div>
+         <div class="calc-input" id='clear'>AC</div>
          <div class="calc-input" id='add'>+</div>
          <div class="calc-input" id='subtract'>-</div>  
          <div class="calc-input" id='multiply'>*</div>
@@ -42,4 +42,3 @@
    <script type="text/javascript" src="calculator.js"></script>
 </body>
 </html>
-

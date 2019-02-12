@@ -1,16 +1,19 @@
 body {
    background-color: rgba(195, 195, 255, 0.9);
-   /*padding: 0 20vmin;*/
-   width: 90vmin;
 }
 
 .calc { 
    display: flex;
    flex-wrap: wrap;
-   background-color: rgba(195, 195, 195, 0.9);
+   background-color: rgba(140, 140, 140, 0.9);
    font-family: "Lucida Console", Monaco, monospace;
-   padding: 9vmin;
+   border-radius: 25px;
+   font-weight: lighter;
+   padding: 5em 3em;
+   width: 500px;
+   height: 635px;
    /*
+   padding: 9vmin;
    margin: 0%;
    height:50vw;
    width: 80vw/40vh;
@@ -19,30 +22,42 @@ body {
 }
 
 .calc-disp input {
-   width:70vmin;
+   text-align:right;
    border: hidden;
+   width:500px;
+   background-color: rgba(200, 255, 200, 0.5);
+/*
+   width:70vmin;
+*/
 }
 
 #calc-display-smol  input {
-   font-size: 5vmin;
    color: gray;
+   font-size: 50px;
+   /*
+   font-size: 5vmin;
+   */
 }
 #calc-display  input {
+   font-size: 100px;
+   /*
    font-size: 10vmin;
+   */
 }
 .calc-numbers, .calc-functions {
    flex-wrap: wrap;
    /*
    width: 50%;
    height:40vmin;
+   width:50vmin;
    */
    font-size: 20vmin;
-   width:50vmin;
+   
 
 }
 .calc-numbers {
-   display: inline-flex;
-   flex: 1 1 60%;
+   display: flex;
+   flex: 1 1 73%;
    /*
    justify-content: start;
    float: left;
@@ -53,22 +68,37 @@ body {
 
 .calc-functions {
    display: flex;
-   flex: 1 4 25%;
-   /*
-   max-width:10%;
-   */
+   flex: 1 1 24%;
 }
-/*
-#add {
-   flex-grow: 4;
-}
-*/
+
 .calc-input {
    background-color: white;
-   border: solid thin black;
-   font-size: 5vmin;
+   border: hidden;
    text-align: center;
+   /* Scaling
+   font-size: 5vmin;
    width: 15vmin;
    height: 4vmin;
    padding: 6vmin 0;
+   */
+}
+
+.calc-numbers .calc-input {
+   font-size: 50px;
+   width: 33.33%;
+   height: 16%;/*65px;*/
+   padding: 7%/*20px*/ 0;
+}
+
+.calc-functions .calc-input {
+   background-color: rgb(0,0,0);
+   color: rgb(255,255,255);
+   font-size: 40px;
+   width: 100%;
+   height: 12.7%; /*40px;*/
+   padding: 10% /*15px*/ 0;
+}
+
+#clear {
+   background-color: rgb(255,100,100);
 }
