@@ -6,6 +6,7 @@ const nums = document.querySelector('.calc-numbers');
 const funcs = document.querySelector('.calc-functions');
 
 var eqFlag = false;                                      // Used for context after equal pressed
+const maxNum = 10000000;                                 // Most digits that can fit on the screen
 
 // TODO: Make it work when adjusting window size
 // Calculator Scaling
@@ -30,46 +31,58 @@ else {
 }
 */
 
+// Keeps answers within result screen size
 function transE(longNum) {
    var padding = 0;
    longNum = Number(longNum);
-   if (longNum > 10000000) {
-      while (longNum > 9) {
-         longNum /= 10;
-         padding++;
-      }
-      longNum = longNum + 'e+' + padding;
+   if (longNum > maxNum) {
+      longNum = longNum.toExponential(3);
    }
+   else
+      longNum = Math.round(longNum * maxNum) / maxNum;
    return longNum;
 }
 
 function calculate(x, y, func) {
+   x = x.replace('ep', 'e+');
+   x = x.replace('en', 'e-');
+   y = y.replace('ep', 'e+');
+   y = y.replace('en', 'e-');
+
+   if (typeof x == "string")
+         x = parseFloat(x);
+   if (typeof y == "string")
+         y = parseFloat(y);
+
+
    switch(func) {
       case '+':
-         return Number(x) + Number(y);
+         return x + y;
       case '-':
-         return Number(x) - Number(y);
+         return x - y;
       case '*':
-         return Number(x) * Number(y);
+         return x * y;
       case '/':
-         if (Number(y) == 0)
+         if (y == 0)
             alert("Why on Earth would you attempt to do that?");
             
-         return Number(x) / Number(y);
+         return x / y;
    }
    return 0;
 }
 
-// TODO: Prevent decimal overflows
 function operate(dispVal) {
-   if (typeof dispVal == "string" && dispVal.search("e+") > 0)
-      dispVal = dispVal.replace('e+', 'e');
+   // Prevents splitting up the exponentials
+   if (typeof dispVal == "string" && dispVal.search("e") > 0) {
+      dispVal = dispVal.replace('e\+', 'ep');
+      dispVal = dispVal.replace('e\-', 'en');
+      
+   }
 
-   var num = dispVal.split(/[\+\-\*\/]/g);            // Array of numbers without operators
-   var func = dispVal.match(/[\+\-\*\/]/g);           // Array of operators
+   var num = dispVal.split(/[\+\-\*\/]/g);               // Array of numbers without operators
+   var func = dispVal.match(/[\+\-\*\/]/g);              // Array of operators
    var indM, indD, indA, indS, i = 0;
    var solve = dispVal;
-
 
    while (func) {
       indM = func.indexOf("*");
@@ -85,30 +98,19 @@ function operate(dispVal) {
          else if (indS < 0)
             i = indA;
          else
-            i = indA < indS ? indA : indS;            // Use earliest occurrence of add/subtr
+            i = indA < indS ? indA : indS;               // Use earliest occurrence of add/subtr
       }
       else if (indM < 0)
          i = indD;
       else if (indD < 0)
          i = indM;
       else
-         i = indM < indD ? indM : indD;               // Use earliest occurrence of mult/div
+         i = indM < indD ? indM : indD;                  // Use earliest occurrence of mult/div
       
       solve = calculate(num[i], num[i+1], func[i]);
       func.splice(i, 1);
       num.splice(i, 2, solve);
    }
-/*
-   var padding = 0;
-   solve = Number(solve);
-   if (solve > 10000000) {
-      while (solve > 9) {
-         solve /= 10;
-         padding++;
-      }
-      solve = solve + 'e+' + padding;
-   }
-*/
    return transE(solve);
 }
 
