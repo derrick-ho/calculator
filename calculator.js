@@ -30,6 +30,19 @@ else {
 }
 */
 
+function transE(longNum) {
+   var padding = 0;
+   longNum = Number(longNum);
+   if (longNum > 10000000) {
+      while (longNum > 9) {
+         longNum /= 10;
+         padding++;
+      }
+      longNum = longNum + 'e+' + padding;
+   }
+   return longNum;
+}
+
 function calculate(x, y, func) {
    switch(func) {
       case '+':
@@ -47,13 +60,17 @@ function calculate(x, y, func) {
    return 0;
 }
 
-// TODO: Prevent # overflows
+// TODO: Prevent decimal overflows
 function operate(dispVal) {
+   if (typeof dispVal == "string" && dispVal.search("e+") > 0)
+      dispVal = dispVal.replace('e+', 'e');
+
    var num = dispVal.split(/[\+\-\*\/]/g);            // Array of numbers without operators
    var func = dispVal.match(/[\+\-\*\/]/g);           // Array of operators
    var indM, indD, indA, indS, i = 0;
    var solve = dispVal;
-   
+
+
    while (func) {
       indM = func.indexOf("*");
       indD = func.indexOf("/");
@@ -62,7 +79,7 @@ function operate(dispVal) {
          indS = func.indexOf("-");
 
          if (indA  < 0 && indS < 0)
-            return solve;
+            return transE(solve);
          else if (indA < 0)
             i = indS;
          else if (indS < 0)
@@ -81,11 +98,20 @@ function operate(dispVal) {
       func.splice(i, 1);
       num.splice(i, 2, solve);
    }
-
-   return solve;
+/*
+   var padding = 0;
+   solve = Number(solve);
+   if (solve > 10000000) {
+      while (solve > 9) {
+         solve /= 10;
+         padding++;
+      }
+      solve = solve + 'e+' + padding;
+   }
+*/
+   return transE(solve);
 }
 
-// TODO: Read e+X numbers
 function setDisp(val) {
    // ==================================Clear===================================
    if (val == 'AC') {
@@ -140,6 +166,7 @@ function setDisp(val) {
       if (lastDec < 0 || disp.value.slice(lastDec).search(/[\+\-\*\/]/g) > -1)
          disp.value += val;
    }
+   // TODO: Implement E in the future
 }
 
 btns.forEach((button) => {
@@ -154,11 +181,9 @@ btns.forEach((button) => {
    });
    button.addEventListener('mousedown', (e) => {
       button.style.opacity = "0.4";
-      //button.style.backgroundColor = "pink";
    });
    button.addEventListener('mouseup', (e) => {
       button.style.opacity = "1.0";
-      //button.style.backgroundColor = "white";
    });
 });
 
@@ -213,5 +238,10 @@ function readKey(e) {
          return setDisp('/');
       case 61:
          return setDisp('=');
+      /* Disabled until properly implemented
+      case 101:
+         disp.value+='e';
+         return setDisp('e');
+      */
    }
 };
